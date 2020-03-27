@@ -2,6 +2,7 @@ const theme = {
   primaryColor: "#204051",
   secondaryColor: "#D8EBB5",
   tertiaryColor: "#639A67",
+  navigationColor: "rgba(99,154,103,0.5)",
   whiteColor: "#fff",
   fontSize: {
     xs: "1.4rem",

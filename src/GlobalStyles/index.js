@@ -15,6 +15,7 @@ html{
         font-family: 'Roboto', sans-serif;
         background:${theme.whiteColor};
         color:${theme.primaryColor};
+        overflow-x:hidden;
     }  
 `;
 
