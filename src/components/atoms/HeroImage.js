@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 const zoom = keyframes`
     0%{
@@ -16,6 +16,10 @@ const HeroImage = styled.img`
   height: 100%;
   transform: scale(1);
   object-fit: cover;
-  animation: ${zoom} 12s ease-in-out infinite alternate;
+  ${({ active }) =>
+    active &&
+    css`
+      animation: ${zoom} 12s ease-in-out infinite alternate;
+    `}
 `;
 export default HeroImage;

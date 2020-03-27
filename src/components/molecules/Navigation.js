@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "theme";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import shopCartIcon from "assets/icons/shopCart.svg";
 import Icon from "components/atoms/Icon";
 import Logo from "components/molecules/Logo";
@@ -12,7 +12,7 @@ const StyledWrapper = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  height: 10vh;
+  height: 12vh;
   background: rgba(${theme.primaryColor}, 0.5);
   background: ${theme.navigationColor};
   color: ${theme.secondaryColor};
@@ -22,6 +22,13 @@ const StyledWrapper = styled.header`
   justify-items: space-around;
   padding-left: 10%;
   padding-right: 5%;
+  transition: all 400ms ease-in-out;
+  ${({ active }) =>
+    active &&
+    css`
+      background: ${theme.tertiaryColor};
+      height: 10vh;
+    `}
 `;
 const StyledNavLink = styled(NavLink)`
   color: ${theme.secondaryColor};
@@ -60,22 +67,46 @@ const StyledNavLinksWrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
 `;
+const StyledNavLinkLogo = styled(NavLink)`
+  text-decoration: none;
+  color: ${theme.secondaryColor};
+`;
 
-const Navigation = () => (
-  <StyledWrapper>
-    <Logo />
-    <StyledNavLinksWrapper>
-      <StyledNavLink activeClassName={"active"} to="/home">
-        strona główna
-      </StyledNavLink>
-      <StyledNavLink to="/about">o cbd</StyledNavLink>
-      <StyledNavLink to="/products">nasze produkty</StyledNavLink>
-      <StyledNavLink to="/contact">kontakt</StyledNavLink>
-      <StyledNavLink to="/shopcart">
-        <Icon urlIcon={shopCartIcon} />
-      </StyledNavLink>
-    </StyledNavLinksWrapper>
-  </StyledWrapper>
-);
+class Navigation extends React.Component {
+  state = {
+    active: false
+  };
+
+  navigationListener() {
+    document.addEventListener("scroll", e => {
+      const presentPosition = window.pageYOffset;
+      let active = false;
+      if (presentPosition > 200) active = true;
+      this.setState({ active });
+    });
+  }
+  componentDidMount() {
+    this.navigationListener();
+  }
+
+  render() {
+    return (
+      <StyledWrapper active={this.state.active}>
+        <StyledNavLinkLogo to="/home">
+          <Logo />
+        </StyledNavLinkLogo>
+        <StyledNavLinksWrapper>
+          <StyledNavLink to="/home">strona główna</StyledNavLink>
+          <StyledNavLink to="/about">o cbd</StyledNavLink>
+          <StyledNavLink to="/products">nasze produkty</StyledNavLink>
+          <StyledNavLink to="/contact">kontakt</StyledNavLink>
+          <StyledNavLink to="/shopcart">
+            <Icon urlIcon={shopCartIcon} />
+          </StyledNavLink>
+        </StyledNavLinksWrapper>
+      </StyledWrapper>
+    );
+  }
+}
 
 export default Navigation;

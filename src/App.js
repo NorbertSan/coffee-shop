@@ -11,17 +11,18 @@ import ProductsView from "views/ProductsView";
 const App = () => (
   <BrowserRouter>
     <GlobalStyles />
-    <MainTemplate />
-    <Switch>
-      <Route exact path="/">
-        <Redirect to="/home" />
-      </Route>
-      <Route path="/home" component={HomeView} />
-      <Route path="/about" component={AboutView} />
-      <Route path="/contact" component={ContactView} />
-      <Route path="/products" component={ProductsView} />
-      <Route path="/shopcart" component={ShopCartView} />
-    </Switch>
+    <MainTemplate>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/home" component={HomeView} />
+        <Route path="/about" component={AboutView} />
+        <Route path="/contact" component={ContactView} />
+        <Route path="/products" component={ProductsView} />
+        <Route path="/shopcart" component={ShopCartView} />
+      </Switch>
+    </MainTemplate>
   </BrowserRouter>
 );
 

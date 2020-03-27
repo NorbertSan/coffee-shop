@@ -1,11 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Navigation from "components/molecules/Navigation";
+import Footer from "components/molecules/Footer";
 
-class MainTemplate extends React.Component {
-  render() {
-    return <Navigation />;
-  }
-}
+const MainTemplate = ({ children }) => (
+  <>
+    <Navigation />
+    {children}
+    <Footer />
+  </>
+);
 
 export default MainTemplate;

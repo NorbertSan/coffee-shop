@@ -5,6 +5,7 @@ const theme = {
   navigationColor: "rgba(99,154,103,0.5)",
   whiteColor: "#fff",
   fontSize: {
+    xxs: "1.1rem",
     xs: "1.4rem",
     s: "1.6rem",
     m: "2.2rem",
