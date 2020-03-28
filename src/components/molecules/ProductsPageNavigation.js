@@ -10,21 +10,31 @@ const StyledWrapper = styled.div`
   position: absolute;
   bottom: -100px;
   left: 50%;
+  z-index: 999;
   transform: translateX(-50%);
 `;
 
 const ProductsPageNavigation = ({ changePage, currentPage, maxPage }) => (
   <StyledWrapper>
-    {currentPage > 1 && (
-      <Button onClick={() => changePage("prev")} small secondary rounded>
-        {`Poprzednia strona ${currentPage - 1}`}
-      </Button>
-    )}
-    {currentPage < maxPage && (
-      <Button onClick={() => changePage("next")} small secondary rounded>
-        {`Następna strona ${currentPage + 1}`}
-      </Button>
-    )}
+    <Button
+      disable={currentPage <= 1}
+      onClick={() => changePage("prev")}
+      small
+      secondary
+      rounded
+    >
+      {`Poprzednia strona ${currentPage - 1}`}
+    </Button>
+
+    <Button
+      disable={currentPage >= maxPage}
+      onClick={() => changePage("next")}
+      small
+      secondary
+      rounded
+    >
+      {`Następna strona ${currentPage + 1}`}
+    </Button>
   </StyledWrapper>
 );
 

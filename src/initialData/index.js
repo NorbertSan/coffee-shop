@@ -56,7 +56,12 @@ export const bestsellers = [
   }
 ];
 export const types = {
-  bletki: "bletki"
+  bletki: "bletki",
+  oils: "olejki",
+  clothes: "ubrania",
+  bongo: "bonga",
+  bestseller: "bestsellery",
+  new: "new"
 };
 const generateID = () => {
   // Math.random should be unique because of its seeding algorithm.
@@ -71,98 +76,126 @@ const generateID = () => {
 };
 export const products = [
   {
-    type: types.bletki,
+    type: [types.oils],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.oils],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.oils],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.oils],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.oils],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: types.bletki,
+    type: [types.bletki],
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99,
+    id: generateID()
+  },
+  {
+    type: [types.bletki],
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99,
+    id: generateID()
+  },
+  {
+    type: [types.bletki],
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99,
+    id: generateID()
+  },
+  {
+    type: [types.bletki],
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99,
+    id: generateID()
+  },
+  {
+    type: [types.bletki],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,

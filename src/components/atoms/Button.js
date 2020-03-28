@@ -15,7 +15,13 @@ const Button = styled.button`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-
+  ${({ disable }) =>
+    disable &&
+    css`
+      opacity: 0.5;
+      pointer-events: none;
+      /* curso */
+    `}
   ${({ tertiary }) =>
     tertiary &&
     css`

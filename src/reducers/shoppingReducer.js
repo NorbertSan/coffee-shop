@@ -1,7 +1,6 @@
 import { ADD__PRODUCT, REMOVE__PRODUCT } from "actions/types";
 
 const initialState = {
-  products: [],
   list: [],
   finalPrice: 0
 };
