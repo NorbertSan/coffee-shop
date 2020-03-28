@@ -1,7 +1,6 @@
 import React from "react";
 import ItemLabel from "components/atoms/ItemLabel";
 import styled from "styled-components";
-import ocbImage from "assets/images/ocbbletki.png";
 import BestsellerLabel from "components/atoms/BestsellerLabel";
 
 const StyledWrapper = styled.div`
@@ -24,10 +23,10 @@ const StyledBestsellerLabel = styled(BestsellerLabel)`
   left: 20px;
 `;
 
-const BestsellerItem = () => (
+const BestsellerItem = ({ image, label }) => (
   <StyledWrapper>
-    <StyledImage src={ocbImage} />
-    <ItemLabel>BIBUŁKI OCB BLACK KING</ItemLabel>
+    <StyledImage src={image} />
+    <ItemLabel>{label}</ItemLabel>
     <StyledBestsellerLabel>bestseller</StyledBestsellerLabel>
   </StyledWrapper>
 );

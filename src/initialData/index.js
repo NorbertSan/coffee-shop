@@ -3,6 +3,7 @@ import aboutImage2 from "assets/images/aboutcbd2.png";
 import aboutImage3 from "assets/images/aboutcbd3.png";
 import aboutImage4 from "assets/images/aboutcbd4.png";
 import jointIcon from "assets/icons/joint.svg";
+import ocbImage from "assets/images/ocbbletki.png";
 
 export const informationsList = [
   {
@@ -38,5 +39,150 @@ export const otherPropertiesAboutCBD = [
       "Łagodzenie nudności i zwiększanie apetytu",
       "Łagodzenie nudności i zwiększanie apetytu"
     ]
+  }
+];
+export const bestsellers = [
+  {
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING"
+  },
+  {
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING"
+  },
+  {
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING"
+  }
+];
+export const types = {
+  bletki: "bletki"
+};
+export const products = [
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
+  },
+  {
+    type: types.bletki,
+    image: ocbImage,
+    label: "BIBUŁKI OCB BLACK KING",
+    price: 4.99
   }
 ];

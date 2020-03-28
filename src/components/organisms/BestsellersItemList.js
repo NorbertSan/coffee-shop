@@ -1,6 +1,6 @@
 import React from "react";
 import BestsellerItem from "components/molecules/BestsellerItem";
-import theme from "theme";
+import { bestsellers } from "initialData";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
@@ -14,9 +14,9 @@ const StyledWrapper = styled.div`
 
 const BestsellersItemList = () => (
   <StyledWrapper>
-    <BestsellerItem />
-    <BestsellerItem />
-    <BestsellerItem />
+    {bestsellers.map(item => (
+      <BestsellerItem image={item.image} label={item.label} />
+    ))}
   </StyledWrapper>
 );
 export default BestsellersItemList;

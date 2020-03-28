@@ -21,7 +21,9 @@ const BestsellersSection = () => (
     <StyledIcon urlIcon={weedIcon} />
     <BestsellersItemList />
     <Link to="/products">
-      <Button rounded>Zobacz wszystkie produkty</Button>
+      <Button rounded tertiary>
+        Zobacz wszystkie produkty
+      </Button>
     </Link>
   </StyledWrapper>
 );

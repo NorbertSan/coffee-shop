@@ -6,7 +6,7 @@ import ArrowUpButton from "components/atoms/ArrowUpButton";
 
 const StyledWrapper = styled.footer`
   width: 100%;
-  margin-top: 100px;
+  margin-top: 150px;
   position: relative;
 `;
 
