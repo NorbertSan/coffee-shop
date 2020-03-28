@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import Title from "components/atoms/Title";
 import theme from "theme";
 import Button from "components/atoms/Button";
@@ -20,13 +21,18 @@ const StyledButton = styled(Button)`
   width: 200px;
 `;
 
-const ShoppingCartSummary = () => (
+const ShoppingCartSummary = ({ finalPrice }) => (
   <StyledWrapper>
     <StyledTitle>
-      Kwota: <span>26.99 zł</span>
+      Kwota: <span>{`${finalPrice} zł`}</span>
     </StyledTitle>
     <StyledButton secondary>zobacz koszyk</StyledButton>
     <StyledButton secondary>zamówienie</StyledButton>
   </StyledWrapper>
 );
-export default ShoppingCartSummary;
+
+const mapStateToProps = state => ({
+  finalPrice: state.shoppingCart.finalPrice
+});
+
+export default connect(mapStateToProps)(ShoppingCartSummary);

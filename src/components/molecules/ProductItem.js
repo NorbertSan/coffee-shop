@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import ItemLabel from "components/atoms/ItemLabel";
 import Button from "components/atoms/Button";
+import { addProduct } from "actions/shoppingActions";
 
 const StyledWrapper = styled.li`
   list-style: none;
@@ -15,13 +17,18 @@ const StyledItemLabel = styled(ItemLabel)`
   margin: 10px 0;
 `;
 
-const ProductItem = ({ image, label, price, type }) => (
+const ProductItem = ({ image, label, price, type, addProduct, id }) => (
   <StyledWrapper>
     <img src={image} alt="product" />
     <ItemLabel>{label}</ItemLabel>
     <StyledItemLabel>{price} zł</StyledItemLabel>
-    <Button rounded>Dodaj do koszyka</Button>
+    <Button
+      onClick={() => addProduct({ image, label, price, type, amount: 1, id })}
+      rounded
+    >
+      Dodaj do koszyka
+    </Button>
   </StyledWrapper>
 );
 
-export default ProductItem;
+export default connect(null, { addProduct })(ProductItem);

@@ -53,7 +53,8 @@ class ProductsItemList extends React.Component {
         <StyledSearchInput placeholder="Wyszukaj produkt ..." />
         {this.filterItem().map((product, index) => (
           <ProductItem
-            key={`product: ${index}`}
+            key={product.id}
+            id={product.id}
             price={product.price}
             label={product.label}
             type={product.type}
