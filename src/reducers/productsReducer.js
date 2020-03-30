@@ -1,10 +1,16 @@
-import { FILTER__PRODUCTS } from "actions/types";
+import { FILTER__PRODUCTS, FETCH__PRODUCT } from "actions/types";
 import { products } from "initialData";
 
+const bestsellers = products.filter(product =>
+  product.type.includes("bestseller")
+);
+
 const initialState = {
-  products: products,
+  bestsellers,
+  products,
   filteredItems: products,
-  filterType: ""
+  filterType: "",
+  filterItem: null
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +28,16 @@ export default (state = initialState, action) => {
         ...state,
         filteredItems: filterProducts(),
         filterType
+      };
+
+    case FETCH__PRODUCT:
+      const id = action.payload.id;
+      const products = state.products;
+      const [filterItem] = products.filter(item => item.id === id);
+
+      return {
+        ...state,
+        filterItem
       };
 
     default:

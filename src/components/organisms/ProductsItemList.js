@@ -82,16 +82,19 @@ class ProductsItemList extends React.Component {
         </StyledTitle>
         <StyledSearchInput placeholder="Wyszukaj produkt ..." />
         {filteredItems.length > 0 ? (
-          this.filterItems(filteredItems).map(product => (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              price={product.price}
-              label={product.label}
-              type={product.type}
-              image={product.image}
-            />
-          ))
+          <>
+            <StyledAlert>{`Znaleziono ${filteredItems.length} produktów`}</StyledAlert>
+            {this.filterItems(filteredItems).map(product => (
+              <ProductItem
+                key={product.id}
+                id={product.id}
+                price={product.price}
+                label={product.label}
+                type={product.type}
+                image={product.image}
+              />
+            ))}
+          </>
         ) : (
           <StyledAlert>Obecnie brak przedmiotów na magazynie</StyledAlert>
         )}

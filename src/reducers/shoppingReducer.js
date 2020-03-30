@@ -8,7 +8,8 @@ const initialState = {
 const calculateFinalPrice = newProductsList =>
   newProductsList.reduce((result, item) => {
     let cost = 0;
-    for (let i = 0; i < item.amount; i++) cost += item.price;
+    for (let i = 0; i < item.amount; i++) cost = cost + item.price;
+    console.log(result);
     return result + cost;
   }, 0);
 

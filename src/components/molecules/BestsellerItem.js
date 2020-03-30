@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ItemLabel from "components/atoms/ItemLabel";
 import styled from "styled-components";
+import theme from "theme";
 import BestsellerLabel from "components/atoms/BestsellerLabel";
 
 const StyledWrapper = styled.div`
@@ -16,19 +18,36 @@ const StyledWrapper = styled.div`
     transform: scale(1.05);
   }
 `;
-const StyledImage = styled.img``;
+const StyledLink = styled(Link)`
+  color: ${theme.primaryColor};
+  text-decoration: none;
+`;
+
 const StyledBestsellerLabel = styled(BestsellerLabel)`
   position: absolute;
   top: 0px;
   left: 20px;
 `;
 
-const BestsellerItem = ({ image, label }) => (
-  <StyledWrapper>
-    <StyledImage src={image} />
-    <ItemLabel>{label}</ItemLabel>
-    <StyledBestsellerLabel>bestseller</StyledBestsellerLabel>
-  </StyledWrapper>
-);
+class BestsellerItem extends React.Component {
+  state = {
+    redirect: false
+  };
+  setRedirect = () => this.setState({ redirect: true });
+  render() {
+    const { image, label, id } = this.props;
+    return (
+      <>
+        <StyledLink to={`products/${id}`}>
+          <StyledWrapper>
+            <img src={image} />
+            <ItemLabel>{label}</ItemLabel>
+            <StyledBestsellerLabel>bestseller</StyledBestsellerLabel>
+          </StyledWrapper>
+        </StyledLink>
+      </>
+    );
+  }
+}
 
 export default BestsellerItem;

@@ -60,7 +60,7 @@ export const types = {
   oils: "olejki",
   clothes: "ubrania",
   bongo: "bonga",
-  bestseller: "bestsellery",
+  bestseller: "bestseller",
   new: "new"
 };
 const generateID = () => {
@@ -76,10 +76,10 @@ const generateID = () => {
 };
 export const products = [
   {
-    type: [types.oils],
+    type: [types.oils, types.bestseller],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
-    price: 4.99,
+    price: 8.0,
     id: generateID()
   },
   {
@@ -90,35 +90,35 @@ export const products = [
     id: generateID()
   },
   {
-    type: [types.bletki],
+    type: [types.bletki, types.bestseller],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: [types.bletki],
+    type: [types.bletki, types.bestseller],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: [types.oils],
+    type: [types.oils, types.bestseller],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: [types.bletki],
+    type: [types.bletki, types.bestseller],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,
     id: generateID()
   },
   {
-    type: [types.bletki],
+    type: [types.bletki, types.bestseller],
     image: ocbImage,
     label: "BIBUŁKI OCB BLACK KING",
     price: 4.99,

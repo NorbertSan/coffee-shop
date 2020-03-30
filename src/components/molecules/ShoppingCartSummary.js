@@ -24,7 +24,7 @@ const StyledButton = styled(Button)`
 const ShoppingCartSummary = ({ finalPrice }) => (
   <StyledWrapper>
     <StyledTitle>
-      Kwota: <span>{`${finalPrice} zł`}</span>
+      Kwota: <span>{`${parseFloat(finalPrice).toFixed(2)} zł`}</span>
     </StyledTitle>
     <StyledButton secondary>zobacz koszyk</StyledButton>
     <StyledButton secondary>zamówienie</StyledButton>

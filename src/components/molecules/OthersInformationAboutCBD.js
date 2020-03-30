@@ -34,14 +34,14 @@ const StyledTitle = styled(Title)`
 
 const OthersInformationAboutCBD = () => (
   <>
-    {otherPropertiesAboutCBD.map(commonInfo => (
+    {otherPropertiesAboutCBD.map((commonInfo, index) => (
       <>
-        <StyledInnerWrapper>
+        <StyledInnerWrapper key={index}>
           <StyledWrapperProperties>
             <Title>{commonInfo.title}</Title>
             <StyledOtherPropertyWrapper>
-              {commonInfo.properties.map(property => (
-                <StyledLi>
+              {commonInfo.properties.map((property, index) => (
+                <StyledLi key={`propertyCBD:${index}`}>
                   <StyledIcon small urlIcon={commonInfo.jointIcon} />
                   <Paragraph>{property}</Paragraph>
                 </StyledLi>

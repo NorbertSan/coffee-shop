@@ -20,7 +20,6 @@ const Button = styled.button`
     css`
       opacity: 0.5;
       pointer-events: none;
-      /* curso */
     `}
   ${({ tertiary }) =>
     tertiary &&
