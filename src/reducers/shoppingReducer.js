@@ -1,4 +1,8 @@
-import { ADD__PRODUCT, REMOVE__PRODUCT } from "actions/types";
+import {
+  ADD__PRODUCT,
+  REMOVE__PRODUCT,
+  DECREASE__PRODUCT
+} from "actions/types";
 
 const initialState = {
   list: [],
@@ -9,7 +13,6 @@ const calculateFinalPrice = newProductsList =>
   newProductsList.reduce((result, item) => {
     let cost = 0;
     for (let i = 0; i < item.amount; i++) cost = cost + item.price;
-    console.log(result);
     return result + cost;
   }, 0);
 
@@ -46,6 +49,20 @@ export default (state = initialState, action) => {
         finalPrice: calculateFinalPrice(
           state.list.filter(item => item.id !== itemID)
         )
+      };
+
+    case DECREASE__PRODUCT:
+      const id = action.payload.id;
+
+      const list = state.list.filter(item => {
+        if (item.id === id) item.amount--;
+        return item;
+      });
+
+      return {
+        ...state,
+        list,
+        finalPrice: calculateFinalPrice(list)
       };
     default:
       return state;

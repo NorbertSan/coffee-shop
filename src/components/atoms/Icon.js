@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 const Icon = styled.svg`
   width: 40px;
   height: 40px;
-  background: url(${({ urlIcon }) => urlIcon});
+  background: url(${({ urlIcon }) => urlIcon}) no-repeat;
   background-size: 100%;
   ${({ small }) =>
     small &&

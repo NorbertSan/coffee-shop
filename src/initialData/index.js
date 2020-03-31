@@ -61,7 +61,7 @@ export const types = {
   clothes: "ubrania",
   bongo: "bonga",
   bestseller: "bestseller",
-  new: "new"
+  new: "nowe"
 };
 const generateID = () => {
   // Math.random should be unique because of its seeding algorithm.
