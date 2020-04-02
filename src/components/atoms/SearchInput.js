@@ -16,11 +16,14 @@ const StyledInput = styled.input`
   background: ${theme.whiteColor};
   border: 1px solid ${theme.primaryColor};
   outline: none;
+  width: 100%;
 `;
 const StyledLi = styled.li`
   padding: 10px;
   text-transform: capitalize;
   background: ${theme.primaryColor};
+  position: relative;
+  z-index: 999;
   cursor: pointer;
 `;
 const StyledUl = styled.ul`

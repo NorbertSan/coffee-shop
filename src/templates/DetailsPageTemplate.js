@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import theme from "theme";
 import HeroImage from "components/atoms/HeroImage";
 import HeroImageContainer from "components/atoms/HeroImageContainer";
 import productsImage from "assets/images/photo3.jpg";
@@ -11,11 +12,11 @@ import ShopCartAddForm from "components/molecules/ShopCartAddForm";
 import DetailsPageDescription from "components/molecules/DetailsPageDescription";
 import Icon from "components/atoms/Icon";
 import backwardIcon from "assets/icons/backward.svg";
-import { fetchSingleProduct } from "actions/productsActions";
 import { addProduct } from "actions/shoppingActions";
 
 const StyledWrapper = styled.section`
   position: relative;
+  padding-bottom: 50px;
 `;
 const StyledIcon = styled(Icon)`
   cursor: pointer;
@@ -36,7 +37,8 @@ const StyledInfo = styled.div`
 `;
 
 const StyledImg = styled.img`
-  width: 70%;
+  width: 60%;
+  object-fit: contain;
 `;
 const StyledInnerWrapper = styled.div`
   position: relative;
@@ -46,25 +48,42 @@ const StyledInnerWrapper = styled.div`
   grid-gap: 50px;
   justify-items: center;
   margin: 50px auto 0;
+  @media screen and (max-width: ${theme.mediaQueries.tablet}) {
+    width: 90%;
+  }
+  @media screen and (max-width: ${theme.mediaQueries.phone}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    * {
+      margin: 10px 0;
+    }
+  }
 `;
 const StyledTitle = styled(Title)`
   text-transform: uppercase;
+  @media screen and (max-width: ${theme.mediaQueries.tablet}) {
+    font-size: ${theme.fontSize.m};
+  }
 `;
 
 class DetailsPageTemplate extends React.Component {
   state = {
     redirect: false
   };
-  componentDidMount() {
-    const { id } = this.props;
-    this.props.fetchSingleProduct(id);
-  }
-
+  filterItemFunc = () => {
+    const { products, id } = this.props;
+    const [filterItem] = products.filter(product => product.id === id);
+    return filterItem;
+  };
   setRedirect = () => this.setState({ redirect: true });
   render() {
-    const { filterItem, id } = this.props;
+    const { id } = this.props;
     const { redirect } = this.state;
     const setRedirect = this.setRedirect;
+    const filterItemFunc = this.filterItemFunc;
+    const filterItem = filterItemFunc();
+    if (!filterItem) setRedirect();
     return (
       <>
         {redirect && <Redirect to="/products" />}
@@ -79,7 +98,10 @@ class DetailsPageTemplate extends React.Component {
               <StyledInfo>
                 <StyledTitle>{filterItem.label}</StyledTitle>
                 <ItemLabel>{filterItem.price.toFixed(2)} zł</ItemLabel>
-                <ShopCartAddForm setRedirect={setRedirect} id={id} />
+                <ShopCartAddForm
+                  setRedirect={setRedirect}
+                  product={filterItem}
+                />
                 <ItemLabel>
                   Tagi:
                   {filterItem.type.map(tag => ` ${tag}, `)}
@@ -95,9 +117,7 @@ class DetailsPageTemplate extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  filterItem: state.products.filterItem
+  products: state.products.products
 });
 
-export default connect(mapStateToProps, { fetchSingleProduct, addProduct })(
-  DetailsPageTemplate
-);
+export default connect(mapStateToProps, { addProduct })(DetailsPageTemplate);

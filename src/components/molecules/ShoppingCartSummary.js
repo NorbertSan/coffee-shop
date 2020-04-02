@@ -42,7 +42,6 @@ class ShoppingCartSummary extends React.Component {
           <StyledButton secondary onClick={setRedirect}>
             zobacz koszyk
           </StyledButton>
-          <StyledButton secondary>zamówienie</StyledButton>
         </StyledWrapper>
       </>
     );

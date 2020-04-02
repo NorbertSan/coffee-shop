@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import theme from "theme";
+import weedIcon from "assets/icons/weed.svg";
 
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');

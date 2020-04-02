@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Icon from "components/atoms/Icon";
 import Title from "components/atoms/Title";
-import shopCardIcon from "assets/icons/shopCart.svg";
+import shopCardIcon from "assets/icons/shopCart2.svg";
 import ShoppingCardItemsList from "components/organisms/ShoppingCardItemsList";
 import ShoppingCartSummary from "components/molecules/ShoppingCartSummary";
 import theme from "theme";
@@ -14,6 +14,10 @@ const StyledWrapper = styled.div`
   border-left: 1px solid ${theme.primaryColor};
   min-height: 60vh;
   width: 100%;
+  @media screen and (max-width: ${theme.mediaQueries.phone}) {
+    margin-top: 100px;
+    border: none;
+  }
 `;
 const StyledInfo = styled.div`
   text-align: center;

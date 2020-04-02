@@ -28,6 +28,15 @@ const StyledBestsellerLabel = styled(BestsellerLabel)`
   top: 0px;
   left: 20px;
 `;
+const Styledimg = styled.img`
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  @media screen and (max-width: ${theme.mediaQueries.ipad}) {
+    width: 100px;
+    height: 150px;
+  }
+`;
 
 class BestsellerItem extends React.Component {
   state = {
@@ -40,9 +49,9 @@ class BestsellerItem extends React.Component {
       <>
         <StyledLink to={`products/${id}`}>
           <StyledWrapper>
-            <img src={image} />
-            <ItemLabel>{label}</ItemLabel>
             <StyledBestsellerLabel>bestseller</StyledBestsellerLabel>
+            <Styledimg src={image} />
+            <ItemLabel>{label}</ItemLabel>
           </StyledWrapper>
         </StyledLink>
       </>

@@ -6,13 +6,16 @@ import ShoppingCardTable from "components/organisms/ShoppingCardTable";
 import Title from "components/atoms/Title";
 import ItemLabel from "components/atoms/ItemLabel";
 import Icon from "components/atoms/Icon";
-import shoppingCartIcon from "assets/icons/shopCart.svg";
+import shoppingCartIcon from "assets/icons/shopCart2.svg";
 import theme from "theme";
 
 const StyledWrapper = styled.section`
   top: 20vh;
   width: 60%;
   margin: 200px auto 100px;
+  @media screen and (max-width:${theme.mediaQueries.tablet}){
+    width:90%;
+  }
 `;
 const StyledHeading = styled.header`
   display: flex;

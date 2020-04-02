@@ -14,6 +14,11 @@ const StyledWrapper = styled.div`
   margin: auto;
   padding-top: 10px;
   margin-top: 20px;
+  @media screen and (max-width: ${theme.mediaQueries.phone}) {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const StyledInfo = styled.div`

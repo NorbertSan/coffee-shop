@@ -1,19 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "theme";
 import Title from "components/atoms/Title";
-import HeroImage from "components/atoms/HeroImage";
 import Paragraph from "components/atoms/Paragraph";
 
 const StyledWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  height: 350px;
-  align-items: flex-start;
-  margin-bottom: 150px;
-  grid-gap: 60px;
+  grid-gap: 30px;
+  margin-bottom: 120px;
+  justify-items: center;
+  align-items: center;
+  @media screen and (max-width: ${theme.mediaQueries.phone}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 const StyledInfo = styled.article``;
+const StyledImage = styled.img`
+  object-fit: cover;
+  width: 100%;
+`;
+const StyledTitle = styled(Title)`
+  text-align: center;
+`;
 
 const AboutSectionSingleInformation = ({
   image,
@@ -24,19 +35,19 @@ const AboutSectionSingleInformation = ({
   <StyledWrapper>
     {index % 2 === 0 ? (
       <>
-        <HeroImage src={image} />
+        <StyledImage src={image} />
         <StyledInfo>
-          <Title>{title}</Title>
+          <StyledTitle>{title}</StyledTitle>
           <Paragraph>{description}</Paragraph>
         </StyledInfo>
       </>
     ) : (
       <>
         <StyledInfo>
-          <Title>{title}</Title>
+          <StyledTitle>{title}</StyledTitle>
           <Paragraph>{description}</Paragraph>
         </StyledInfo>
-        <HeroImage src={image} />
+        <StyledImage src={image} />
       </>
     )}
   </StyledWrapper>

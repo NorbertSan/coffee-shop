@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "components/atoms/Button";
+import theme from 'theme'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -12,6 +13,9 @@ const StyledWrapper = styled.div`
   left: 50%;
   z-index: 999;
   transform: translateX(-50%);
+  @media screen and (max-width:${theme.mediaQueries.tablet}){
+    width:80%;
+  }
 `;
 
 const ProductsPageNavigation = ({ changePage, currentPage, maxPage }) => (

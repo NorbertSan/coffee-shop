@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import theme from "theme";
 import BestsellerItem from "components/molecules/BestsellerItem";
 import styled, { css } from "styled-components";
 import Icon from "components/atoms/Icon";
@@ -7,7 +8,7 @@ import backwardIcon from "assets/icons/backward2.svg";
 
 const StyledWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(${({ amountOfItems }) => amountOfItems}, 1fr);
   align-items: center;
   justify-items: center;
   margin-bottom: 70px;
@@ -16,7 +17,7 @@ const StyledWrapper = styled.div`
 `;
 const StyledLeftIcon = styled(Icon)`
   position: absolute;
-  left: -50px;
+  left: -10px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9;
@@ -30,7 +31,7 @@ const StyledLeftIcon = styled(Icon)`
 const StyledRightIcon = styled(Icon)`
   cursor: pointer;
   position: absolute;
-  right: -50px;
+  right: -10px;
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
   z-index: 9;
@@ -43,26 +44,49 @@ const StyledRightIcon = styled(Icon)`
 
 class BestsellersItemList extends React.Component {
   state = {
-    position: 0
+    position: 0,
+    amountOfItems: 3
   };
+  componentDidMount() {
+    this.documentListener(window.innerWidth);
+    this.setAmountOfItems(null, window.innerWidth);
+  }
   shiftSlider = direction => {
-    const { position } = this.state;
+    const { position, amountOfItems } = this.state;
     const { bestsellers } = this.props;
     if (direction === "left" && position > 0)
       this.setState(prevState => ({
         position: prevState.position--
       }));
-    else if (direction === "right" && position + 3 < bestsellers.length)
+    else if (
+      direction === "right" &&
+      position + amountOfItems < bestsellers.length
+    )
       this.setState(prevState => ({
         position: prevState.position++
       }));
   };
+  setAmountOfItems = (e, presentWidth) => {
+    let innerWidth;
+    if (presentWidth) innerWidth = presentWidth;
+    else {
+      const target = e.currentTarget;
+      innerWidth = target.innerWidth;
+    }
+    if (1100 <= innerWidth) this.setState({ amountOfItems: 3, position: 0 });
+    if (600 < innerWidth && innerWidth < 1100)
+      this.setState({ amountOfItems: 2, position: 0 });
+    if (innerWidth <= 600) this.setState({ amountOfItems: 1, position: 0 });
+  };
+  documentListener = presentWidth => {
+    window.addEventListener("resize", e => this.setAmountOfItems(e));
+  };
   render() {
-    const { position } = this.state;
+    const { position, amountOfItems } = this.state;
     const { bestsellers } = this.props;
     const shiftSlider = this.shiftSlider;
     return (
-      <StyledWrapper>
+      <StyledWrapper amountOfItems={amountOfItems}>
         <StyledLeftIcon
           disable={position === 0}
           onClick={() => shiftSlider("left")}
@@ -70,12 +94,12 @@ class BestsellersItemList extends React.Component {
           urlIcon={backwardIcon}
         />
         <StyledRightIcon
-          disable={bestsellers.length - 3 === position}
+          disable={bestsellers.length - amountOfItems === position}
           onClick={() => shiftSlider("right")}
           small
           urlIcon={backwardIcon}
         />
-        {bestsellers.slice(position, position + 3).map(item => (
+        {bestsellers.slice(position, position + amountOfItems).map(item => (
           <BestsellerItem
             key={`bestseller:${item.id}`}
             id={item.id}

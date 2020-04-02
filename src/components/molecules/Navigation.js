@@ -1,17 +1,18 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import theme from "theme";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import shopCartIcon from "assets/icons/shopCart.svg";
 import Icon from "components/atoms/Icon";
 import Logo from "components/molecules/Logo";
+import Hamburger from "components/molecules/Hamburger";
 
 const StyledWrapper = styled.header`
   z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 12vh;
   background: rgba(${theme.primaryColor}, 0.5);
   background: ${theme.navigationColor};
@@ -29,6 +30,11 @@ const StyledWrapper = styled.header`
       background: ${theme.tertiaryColor};
       height: 10vh;
     `}
+  @media screen and (max-width:${theme.mediaQueries.tablet}){
+    grid-template-columns:2fr 3fr;
+    padding-left:5%;
+  }
+
 `;
 const StyledNavLink = styled(NavLink)`
   color: ${theme.secondaryColor};
@@ -66,6 +72,23 @@ const StyledNavLinksWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: ${theme.mediaQueries.ipad}) {
+    position: absolute;
+    padding: 40px 0;
+    top: 0%;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    background: ${theme.tertiaryColor};
+    height: 300px;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+    ${({ active }) =>
+      active &&
+      css`
+        transform: translateY(0);
+      `}
+  }
 `;
 const StyledNavLinkLogo = styled(NavLink)`
   text-decoration: none;
@@ -74,9 +97,12 @@ const StyledNavLinkLogo = styled(NavLink)`
 
 class Navigation extends React.Component {
   state = {
-    active: false
+    active: false,
+    navOpen: false
   };
 
+  toogleHamburger = () =>
+    this.setState(prevState => ({ navOpen: !prevState.navOpen }));
   navigationListener() {
     document.addEventListener("scroll", e => {
       const presentPosition = window.pageYOffset;
@@ -90,20 +116,28 @@ class Navigation extends React.Component {
   }
 
   render() {
+    const { navOpen } = this.state;
+    const toogleHamburger = this.toogleHamburger;
     return (
       <StyledWrapper active={this.state.active}>
         <StyledNavLinkLogo to="/home">
           <Logo />
         </StyledNavLinkLogo>
-        <StyledNavLinksWrapper>
-          <StyledNavLink to="/home">strona główna</StyledNavLink>
-          <StyledNavLink to="/about">o cbd</StyledNavLink>
-          <StyledNavLink to="/products">nasze produkty</StyledNavLink>
-          <StyledNavLink to="/contact">kontakt</StyledNavLink>
-          <StyledNavLink to="/shopcart">
-            <Icon urlIcon={shopCartIcon} />
+        <StyledNavLinksWrapper active={navOpen}>
+          <StyledNavLink onClick={toogleHamburger} to="/home">
+            strona główna
+          </StyledNavLink>
+          <StyledNavLink onClick={toogleHamburger} to="/about">
+            o cbd
+          </StyledNavLink>
+          <StyledNavLink onClick={toogleHamburger} to="/products">
+            nasze produkty
+          </StyledNavLink>
+          <StyledNavLink onClick={toogleHamburger} to="/shopcart">
+            <Icon small urlIcon={shopCartIcon} />
           </StyledNavLink>
         </StyledNavLinksWrapper>
+        <Hamburger toogleHamburger={toogleHamburger} active={navOpen} />
       </StyledWrapper>
     );
   }

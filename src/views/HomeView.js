@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import theme from 'theme'
 import mainViewImage from "assets/images/photo1.jpg";
 import mainViewImage2 from "assets/images/photo4.jpg";
 import HeroImage from "components/atoms/HeroImage";
@@ -28,6 +29,9 @@ const StyledHeroImageContainer = styled(HeroImageContainer)`
 const StyledInnerWrapper = styled.div`
   width: 60%;
   margin: auto;
+  @media screen and (max-width:${theme.mediaQueries.tablet}){
+    width:80%;
+  }
 `;
 const StyledParagraph = styled(Paragraph)`
   width: 80%;

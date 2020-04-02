@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ShoppingCardItem from "components/molecules/ShoppingCardItem";
 import { connect } from "react-redux";
+import ShoppingCardItem from "components/molecules/ShoppingCardItem";
 
 const StyledWrapper = styled.ul`
   margin: 0;
@@ -11,7 +11,7 @@ const StyledWrapper = styled.ul`
 
 const ShoppingCardItemsList = ({ list }) => (
   <StyledWrapper>
-    {list.map((item, index) => (
+    {list.map(item => (
       <ShoppingCardItem
         key={`shopitem: ${item.id}`}
         id={item.id}

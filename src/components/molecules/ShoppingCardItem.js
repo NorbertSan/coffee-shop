@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { removeProduct } from "actions/shoppingActions";
 import ItemLabel from "components/atoms/ItemLabel";
 import Icon from "components/atoms/Icon";
@@ -28,9 +29,11 @@ const StyledInnerWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-const StyledInfo = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
+  color: ${theme.primaryColor};
+  text-decoration: none;
 `;
 const StyledIcon = styled(Icon)`
   border: none;
@@ -63,13 +66,13 @@ const ShoppingCardItem = ({
         as="button"
         urlIcon={closeIcon}
       />
-      <StyledInfo>
+      <StyledLink to={`/products/${id}`}>
         <ItemLabel>{label}</ItemLabel>
         <StyledItemLabel>
           <span>{`${amount}x `}</span>
           {`${(amount * price).toFixed(2)} zł`}
         </StyledItemLabel>
-      </StyledInfo>
+      </StyledLink>
     </StyledInnerWrapper>
   </StyledWrapper>
 );

@@ -47,6 +47,7 @@ const StyledTitle = styled(Title)`
 const StyledParagraph = styled(Paragraph)`
   line-height: 35px;
   margin-top: 50px;
+  padding: 30px;
 `;
 class DetailsPageDescription extends React.Component {
   state = {

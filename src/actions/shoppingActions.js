@@ -1,4 +1,9 @@
-import { ADD__PRODUCT, REMOVE__PRODUCT, DECREASE__PRODUCT } from "./types";
+import {
+  ADD__PRODUCT,
+  REMOVE__PRODUCT,
+  DECREASE__PRODUCT,
+  ADD_COUPON
+} from "./types";
 
 export const addProduct = product => dispatch => {
   console.log("add product action");
@@ -24,6 +29,16 @@ export const decreaseProduct = id => dispatch => {
     type: DECREASE__PRODUCT,
     payload: {
       id
+    }
+  });
+};
+
+export const addCoupon = coupon => dispatch => {
+  console.log("add coupon action");
+  dispatch({
+    type: ADD_COUPON,
+    payload: {
+      coupon
     }
   });
 };

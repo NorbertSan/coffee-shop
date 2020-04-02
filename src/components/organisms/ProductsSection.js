@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "theme";
 import ProductsItemList from "components/organisms/ProductsItemList";
 import ShoppingCard from "components/organisms/ShoppingCard";
 
@@ -12,6 +13,9 @@ const StyledWrapper = styled.div`
   grid-template-columns: 4fr 1fr;
   justify-items: center;
   align-items: flex-start;
+  @media screen and (max-width: ${theme.mediaQueries.phone}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ProductsSection = () => (

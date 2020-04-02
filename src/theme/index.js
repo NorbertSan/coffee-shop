@@ -16,6 +16,11 @@ const theme = {
     regular: "400",
     medium: "500",
     bold: "700"
+  },
+  mediaQueries: {
+    tablet: "1200px",
+    ipad: "850px",
+    phone: "600px"
   }
 };
 

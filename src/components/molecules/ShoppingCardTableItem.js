@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import theme from "theme";
 import { connect } from "react-redux";
 import {
@@ -29,7 +30,7 @@ const StyledWrapper = styled.ul`
 `;
 const StyledIcon = styled(Icon)`
   position: absolute;
-  left: 15px;
+  left: 8px;
   top: 50%;
   transform: translateY(-50%);
   width: 15px;
@@ -37,28 +38,42 @@ const StyledIcon = styled(Icon)`
   cursor: pointer;
   z-index: 999;
 `;
-const StyledInfo = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
+  justify-items: flex-start;
+  color: ${theme.primaryColor};
+  text-decoration: none;
 `;
 const StyledImage = styled.img`
   padding: 0;
   margin: 0;
   height: 40px;
+  width: 50px;
   object-fit: contain;
+  @media screen and (max-width: ${theme.mediaQueries.phone}) {
+    display: none;
+  }
 `;
 const StyledInnerWrapper = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  position: relative;
   input {
     width: 80%;
     padding: 5px 5px;
   }
 `;
 const StyledIconSecondary = styled(Icon)`
-  transform: scale(0.6);
   cursor: pointer;
+  transform: scale(0.6);
+  margin: 10px 5px 0;
+`;
+const StyledItemLabel = styled(ItemLabel)`
+  @media screen and (max-width: ${theme.mediaQueries.tablet}) {
+    font-size: ${theme.fontSize.xxs};
+  }
 `;
 
 const ShoppingCardTableItem = ({
@@ -69,10 +84,13 @@ const ShoppingCardTableItem = ({
 }) => (
   <StyledWrapper>
     <StyledIcon urlIcon={closeIcon} onClick={() => removeProduct(product.id)} />
-    <StyledInfo>
+    <StyledLink to={`/products/${product.id}`}>
       <StyledImage src={product.image} />
-      <ItemLabel>{product.label}</ItemLabel>
-    </StyledInfo>
+      <StyledItemLabel>{`${product.label.substring(
+        0,
+        13
+      )}...`}</StyledItemLabel>
+    </StyledLink>
     <ItemLabel>{product.price} zł</ItemLabel>
     <StyledInnerWrapper>
       <StyledIconSecondary
@@ -83,7 +101,7 @@ const ShoppingCardTableItem = ({
             : decreaseProduct(product.id);
         }}
       />
-      <input type="number" readOnly value={product.amount} />
+      <input readOnly value={product.amount} />
       <StyledIconSecondary
         urlIcon={plusIcon}
         onClick={() => addProduct(product)}

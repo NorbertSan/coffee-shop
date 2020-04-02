@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { addProduct } from "actions/shoppingActions";
-import { fetchSingleProduct } from "actions/productsActions";
 import Button from "components/atoms/Button";
 
 const StyledInputField = styled.form`
@@ -13,6 +12,9 @@ const StyledInput = styled.input`
   padding: 10px;
   margin-right: 15px;
 `;
+const StyledButton = styled(Button)`
+  padding:0 20px;
+`
 
 class ShopCartAddForm extends React.Component {
   state = {
@@ -23,26 +25,22 @@ class ShopCartAddForm extends React.Component {
       value: e.target.value
     });
   };
-  addItem = (e, id) => {
-    const { filterItem, setRedirect } = this.props;
+  addItem = e => {
     e.preventDefault();
+    const { product, setRedirect } = this.props;
     const amount = parseInt(e.target[0].value);
     if (Number.isInteger(amount) && amount >= 1) {
-      this.props.fetchSingleProduct(id);
-      if (filterItem) {
-        filterItem.amount = amount;
-        this.props.addProduct(filterItem);
-      }
+      product.amount = amount;
+      this.props.addProduct(product);
       setRedirect();
     }
   };
   render() {
     const changeValue = this.changeValue;
     const { value } = this.state;
-    const { id } = this.props;
     const addItem = this.addItem;
     return (
-      <StyledInputField onSubmit={e => addItem(e, id)}>
+      <StyledInputField onSubmit={e => addItem(e)}>
         <StyledInput
           type="number"
           min="1"
@@ -50,18 +48,12 @@ class ShopCartAddForm extends React.Component {
           value={value}
           onChange={e => changeValue(e)}
         />
-        <Button type="submit" secondary>
+        <StyledButton type="submit" secondary>
           Dodaj do koszyka
-        </Button>
+        </StyledButton>
       </StyledInputField>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  filterItem: state.products.filterItem
-});
-
-export default connect(mapStateToProps, { addProduct, fetchSingleProduct })(
-  ShopCartAddForm
-);
+export default connect(null, { addProduct })(ShopCartAddForm);
