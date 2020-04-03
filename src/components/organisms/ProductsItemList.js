@@ -8,29 +8,28 @@ import ProductsPageNavigation from "components/molecules/ProductsPageNavigation"
 import { filterProducts } from "actions/productsActions";
 import theme from "theme";
 
-
 const StyledWrapper = styled.ul`
   display: grid;
   position: relative;
-  grid-template-columns: repeat(auto-fit,minmax(100px,300px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
   width: 100%;
-  justify-content:center;
+  justify-content: center;
   grid-gap: 15px;
   padding: 0;
   padding-top: 120px;
 `;
 
 const StyledTitle = styled(Title)`
-  width:100%;
-  text-align:center;
+  width: 100%;
+  text-align: center;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   font-size: ${theme.fontSize.m};
   text-transform: uppercase;
-  text-align:center;
-  @media screen and (max-width:${theme.mediaQueries.tablet}){
-    font-size:${theme.fontSize.s};
+  text-align: center;
+  @media screen and (max-width: ${theme.mediaQueries.tablet}) {
+    font-size: ${theme.fontSize.s};
   }
 `;
 const StyledAlert = styled.div`
@@ -40,37 +39,41 @@ const StyledAlert = styled.div`
   left: 50%;
   transform: translateX(-50%);
   top: 60px;
-    @media screen and (max-width:${theme.mediaQueries.tablet}){
-    font-size:${theme.fontSize.xs};
+  @media screen and (max-width: ${theme.mediaQueries.tablet}) {
+    font-size: ${theme.fontSize.xs};
   }
 `;
 const StyledInputWrapper = styled.div`
-  position:absolute;
-  width:200px;
-  @media screen and (max-width:${theme.mediaQueries.tablet}){
-  transform:translateX(-50%);
-  left:50%;
-  top:-50px;
+  position: absolute;
+  width: 200px;
+  @media screen and (max-width: ${theme.mediaQueries.tablet}) {
+    transform: translateX(-50%);
+    left: 50%;
+    top: -50px;
   }
-`
+`;
 
 class ProductsItemList extends React.Component {
   state = {
     currentPage: 1,
-    productsPerPage: 8
+    productsPerPage: 8,
   };
-  changePage = type => {
+  changePage = (type) => {
     let { currentPage, productsPerPage } = this.state;
     const { filteredItems } = this.props;
     if (type === "prev" && currentPage > 1)
-      this.setState(prevState => ({ currentPage: prevState.currentPage-- }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage - 1,
+      }));
     else if (
       type === "next" &&
       Math.ceil(filteredItems.length / productsPerPage) > currentPage
     )
-      this.setState(prevState => ({ currentPage: prevState.currentPage++ }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage + 1,
+      }));
   };
-  filterItems = products => {
+  filterItems = (products) => {
     let { currentPage, productsPerPage } = this.state;
     return products.slice(
       (currentPage - 1) * productsPerPage,
@@ -94,13 +97,12 @@ class ProductsItemList extends React.Component {
           {filterType === "" ? "Wszystkie produkty" : filterType}
         </StyledTitle>
         <StyledInputWrapper>
-        <SearchInput placeholder="Wyszukaj produkt ..." />
-      
+          <SearchInput placeholder="Wyszukaj produkt ..." />
         </StyledInputWrapper>
         {filteredItems.length > 0 ? (
           <>
             <StyledAlert>{`Znaleziono ${filteredItems.length} produktów`}</StyledAlert>
-            {this.filterItems(filteredItems).map(product => (
+            {this.filterItems(filteredItems).map((product) => (
               <ProductItem
                 key={product.id}
                 id={product.id}
@@ -125,9 +127,9 @@ class ProductsItemList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   filteredItems: state.products.filteredItems,
-  filterType: state.products.filterType
+  filterType: state.products.filterType,
 });
 
 export default connect(mapStateToProps, { filterProducts })(ProductsItemList);
