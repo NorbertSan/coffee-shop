@@ -57,14 +57,14 @@ class BestsellersItemList extends React.Component {
     console.log("shift");
     if (direction === "left" && position > 0)
       this.setState((prevState) => ({
-        position: prevState.position--,
+        position: prevState.position - 1,
       }));
     else if (
       direction === "right" &&
       position + amountOfItems < bestsellers.length
     )
       this.setState((prevState) => ({
-        position: prevState.position++,
+        position: prevState.position + 1,
       }));
   };
   setAmountOfItems = (e, presentWidth) => {
