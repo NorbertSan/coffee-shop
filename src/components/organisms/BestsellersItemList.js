@@ -45,25 +45,26 @@ const StyledRightIcon = styled(Icon)`
 class BestsellersItemList extends React.Component {
   state = {
     position: 0,
-    amountOfItems: 3
+    amountOfItems: 3,
   };
   componentDidMount() {
     this.documentListener(window.innerWidth);
     this.setAmountOfItems(null, window.innerWidth);
   }
-  shiftSlider = direction => {
+  shiftSlider = (direction) => {
     const { position, amountOfItems } = this.state;
     const { bestsellers } = this.props;
+    console.log("shift");
     if (direction === "left" && position > 0)
-      this.setState(prevState => ({
-        position: prevState.position--
+      this.setState((prevState) => ({
+        position: prevState.position--,
       }));
     else if (
       direction === "right" &&
       position + amountOfItems < bestsellers.length
     )
-      this.setState(prevState => ({
-        position: prevState.position++
+      this.setState((prevState) => ({
+        position: prevState.position++,
       }));
   };
   setAmountOfItems = (e, presentWidth) => {
@@ -78,8 +79,8 @@ class BestsellersItemList extends React.Component {
       this.setState({ amountOfItems: 2, position: 0 });
     if (innerWidth <= 600) this.setState({ amountOfItems: 1, position: 0 });
   };
-  documentListener = presentWidth => {
-    window.addEventListener("resize", e => this.setAmountOfItems(e));
+  documentListener = (presentWidth) => {
+    window.addEventListener("resize", (e) => this.setAmountOfItems(e));
   };
   render() {
     const { position, amountOfItems } = this.state;
@@ -99,7 +100,7 @@ class BestsellersItemList extends React.Component {
           small
           urlIcon={backwardIcon}
         />
-        {bestsellers.slice(position, position + amountOfItems).map(item => (
+        {bestsellers.slice(position, position + amountOfItems).map((item) => (
           <BestsellerItem
             key={`bestseller:${item.id}`}
             id={item.id}
@@ -112,8 +113,8 @@ class BestsellersItemList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  bestsellers: state.products.bestsellers
+const mapStateToProps = (state) => ({
+  bestsellers: state.products.bestsellers,
 });
 
 export default connect(mapStateToProps)(BestsellersItemList);
